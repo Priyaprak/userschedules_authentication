@@ -1,0 +1,70 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+    <div class="column justify-content-md-center" style="margin-top: 30px">
+        <div class="col-md-6">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedules" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout User</a>
+                </li>
+            </ul>
+            <div class="card">
+                 {{#if message}}
+                    <div class="alert {{messageClass}}" role="alert">
+                    {{message}}
+                    </div>
+                {{/if}}
+                <div class="card-header">
+                   Create New Schedule
+                </div>
+                <div class="card-body">
+                    <form id="form" action="/new" method="POST" >
+                        <div class="form-group">
+                            <label for="day" class="control-label col-sm-4"> Day </label>
+                                <select id="day" name="dayoftheweek" class="form-control" placeholder="Select the shift timings">
+                                    <option value="1">Monday</option>
+                                    <option value="2">Tuesday</option>
+                                    <option value="3">Wednesday</option>
+                                    <option value="4">Thursday</option>
+                                    <option value="5">Friday</option>
+                                    <option value="6">Saturday</option>
+                                    <option value="7">Sunday</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            {{msg}}
+                        </div> 
+                        <div class="form-group">
+                            <label for="starttime" class="control-label col-sm-4"> Start Time</label>
+                            <input type="time" id="starttime" name="starttime" class="form-control" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="endtime" class="control-label col-sm-4"> End Time</label>
+                            <input type="time" id="endtime" name="endtime" class="form-control" >
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </div>
+                    </form>  
+                    
+                    {{#if schedulesLength}}
+                        <h4 class ="mb-2">List of Schedules</h4>
+                            {{#each scheduleData}}
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item"><label>< {{this.daysoftheweek}} {{this.starttime}}-{{this.endtime}} > </label></li>
+                                    <li class="list-group-item"><a href="/delete/{{this.scheduleid}}">Delete</a></li>
+                                </ul>
+                            {{/each}}
+                    {{else}}
+                        <p>No Schedules</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>

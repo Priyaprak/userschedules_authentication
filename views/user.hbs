@@ -1,0 +1,36 @@
+<div class="mt-5">
+    
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/schedules">Schedules Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout User</a>
+        </li>
+
+    </ul>
+   
+    {{#each userData}}
+    <p><b>Email</b>:{{this.emailaddress}}</p>
+    {{/each}}
+    {{#if scheduleData.length}}
+    <table class="table mb-5">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Start at</th>
+                <th>End at</th>
+            </tr>
+        </thead>
+        {{#each scheduleData}}
+        <tr>
+            <td>{{this.daysoftheweek}}</td>
+            <td>{{this.starttime}}</td>
+            <td>{{this.endtime}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    {{else}}
+    No schedules yet! 🥳
+    {{/if}}
+</div>

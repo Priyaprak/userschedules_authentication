@@ -1,0 +1,34 @@
+
+<div style="margin-top: 30px">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/schedulesMng">Schedule Management</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout User</a>
+        </li>
+    </ul>
+    <h1 class="text-center mb-5">List of Users schedules </h1>
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th>Full name</th>
+                    <th>Day</th>
+                    <th>Start at</th>
+                    <th>End at</th>
+                </tr>
+            </thead>
+            {{#if schedulesLength}}
+                {{#each scheduleData}}
+                <tr>
+                    <td><a href="/user/{{this.userid}}">{{this.firstname}} {{this.surname}}</a></td>
+                    <td>{{this.daysoftheweek}}</td>
+                    <td>{{this.starttime}}</td>
+                    <td>{{this.endtime}}</td>
+                </tr>
+                {{/each}}
+            {{else}}
+                <p>No Schedules</p>
+            {{/if}}
+        </table>
+</div>
